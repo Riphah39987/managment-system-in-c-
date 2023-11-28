@@ -1,0 +1,89 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string password = "umer";
+    string inputPassword;
+    int amount = 0;
+    int Biotin_sold = 0, Azomax_sold = 0, Brufen_sold = 0, Flagyl_sold = 0;
+    int price_of_Biotin = 4, price_of_Azomax = 3, price_of_Brufen = 2, price_of_Flagyl = 2;
+
+    cout << "Please Enter the Password: ";
+    getline(cin, inputPassword);
+
+    if (inputPassword != password) {
+        cout << "You entered an Incorrect Password" << endl;
+        return 0;
+    }
+
+    while (true) {
+        cout << "\nChoose any Option:\n"
+                "1. Buy Medicines\n"
+                "2. See Medicine Statistics\n"
+                "3. Show Amount Earned Today\n"
+                "4. Exit\n";
+        
+        char choice;
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case '1':
+                cout << "Choose the medicine to buy:\n"
+                        "1. Biotin - 4rs\n"
+                        "2. Azomax - 3rs\n"
+                        "3. Brufen - 2rs\n"
+                        "4. Flagyl - 2rs\n";
+
+                char medChoice;
+                cout << "Enter your choice: ";
+                cin >> medChoice;
+
+                int quantity;
+                cout << "Enter quantity: ";
+                cin >> quantity;
+
+                switch (medChoice) {
+                    case '1':
+                        Biotin_sold += quantity;
+                        amount += (quantity * price_of_Biotin);
+                        break;
+                    case '2':
+                        Azomax_sold += quantity;
+                        amount += (quantity * price_of_Azomax);
+                        break;
+                    case '3':
+                        Brufen_sold += quantity;
+                        amount += (quantity * price_of_Brufen);
+                        break;
+                    case '4':
+                        Flagyl_sold += quantity;
+                        amount += (quantity * price_of_Flagyl);
+                        break;
+                    default:
+                        cout << "Wrong Input. Please try again." << endl;
+                        break;
+                }
+                break;
+            case '2':
+                cout << "Medicine Statistics:\n"
+                        "Biotin sold: " << Biotin_sold << endl
+                        "Azomax sold: " << Azomax_sold << endl
+                        "Brufen sold: " << Brufen_sold << endl
+                        "Flagyl sold: " << Flagyl_sold << endl;
+                break;
+            case '3':
+                cout << "Amount Earned Today: " << amount << endl;
+                break;
+            case '4':
+                cout << "Exiting the program." << endl;
+                return 0;
+            default:
+                cout << "Wrong Input. Please try again." << endl;
+                break;
+        }
+    }
+
+    return 0;
+}
